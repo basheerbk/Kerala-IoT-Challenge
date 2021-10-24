@@ -6,13 +6,8 @@
 <br>
 
  
-### Table of Documentation
-| Challenge | Topic | Links |
-| --- | --- | --- |  
-| Level 1 | Arduino & Basic Electronics |[Documentation](link)|
-| Level 2 | Introduction to IoT | - |
-| Level 3 | IoT Intermediate| - |
-| Level 4 | IoT Advanced    | - |
+### Links to Documentation
+[Level 1](link)
 
 <br>
 
