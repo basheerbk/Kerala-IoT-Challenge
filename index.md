@@ -101,7 +101,57 @@ digitalWrite(redled, LOW);// turn off red LED
 
 ## Output
 
-> In Traffic light the green LED blink about 5 second, then it is turnoff. Then the yellow LED blinks 3 times with a time interval of 0.5 second.Then the red LED blink about 5 seconds. This process continues.
+> In Traffic light the green LED blink about 5 second, then it is turnoff. Then the yellow LED blinks 3 times with a time interval of 0.5 second.Then the red LED blink about 5 seconds.
+>  This process continues.
 > ![Gif2](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211104_191302.gif?raw=true)
 
  
+# Experiment 3 : LED Chasing Effect
+
+> We often see billboards composed of colorful LEDs. They are constantly changing to form various light effects. In this experiment, we compile a program to simulate LED chasing effect. The long lead of LED is the positive side; short lead is negative.
+
+## Components Required
+
+* Led *6
+* Arduino board *1
+* 220Ω resistor *6
+* Breadboard *1
+* USB cable*1
+* Breadboard wire *13
+
+## Circuit Diagram
+
+![img3](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(409).png?raw=true)
+
+## Code
+
+```
+
+int BASE = 2 ;  // the I/O pin for the first LED
+int NUM = 6;   // number of LEDs
+void setup()
+{
+   for (int i = BASE; i < BASE + NUM; i ++) 
+   {
+     pinMode(i, OUTPUT);   // set I/O pins as output
+   }
+}
+void loop()
+{
+   for (int i = BASE; i < BASE + NUM; i ++) 
+   {
+     digitalWrite(i, LOW);    // set I/O pins as “low”, turn off LEDs one by one.
+     delay(200);        // delay
+   }
+   for (int i = BASE; i < BASE + NUM; i ++) 
+   {
+     digitalWrite(i, HIGH);    // set I/O pins as “high”, turn on LEDs one by one
+     delay(400);        // delay
+   }  
+}
+
+```
+
+## Output
+> LED with chasing effect <br>
+>  ![gif3](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211104_213739.gif?raw=true)
