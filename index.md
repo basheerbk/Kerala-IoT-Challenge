@@ -153,5 +153,54 @@ void loop()
 ```
 
 ## Output
-> LED with chasing effect <br>
+> LED with chasing effect
+>  <br>
 >  ![gif3](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211104_213739.gif?raw=true)
+
+
+# Experiment 4: Button Controlled LED
+
+> An experiment to light an LED using a Push Button.
+
+## Components Required 
+
+* Arduino Uno
+* Button switch*1
+* Red M5 LED*1
+* 220ΩResistor*1
+* 10KΩ Resistor*1
+* Breadboard*1
+* Breadboard Jumper Wire*6
+* USB cable*1
+
+## Circuit Diagrams
+![img4](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(411).png?raw=true)
+![pushbutton](https://www.teachwithict.com/uploads/5/5/8/2/5582303/published/button-fig-1.png?1531054399)
+## Code
+
+```
+
+int ledpin=11;// initialize pin 11
+int inpin=7;// initialize pin 7
+int val;// define val
+void setup()
+{
+pinMode(ledpin,OUTPUT);// set LED pin as “output”
+pinMode(inpin,INPUT);// set button pin as “input”
+}
+void loop()
+{
+val=digitalRead(inpin);// read the level value of pin 7 and assign if to val
+if(val==LOW)// check if the button is pressed, if yes, turn on the LED
+{ digitalWrite(ledpin,LOW);}
+else
+{ digitalWrite(ledpin,HIGH);}
+}
+
+```
+## Output
+
+> When the push button is pressed the LED is turned on otherwise it is off.
+> <br>
+> ![gif4](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211105_123548.gif?raw=true)
+
