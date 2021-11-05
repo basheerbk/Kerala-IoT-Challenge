@@ -204,3 +204,37 @@ else
 > <br>
 > ![gif4](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211105_123548.gif?raw=true)
 
+# Experiment 5 : Buzzer
+> An experiment to understand the working of a buzzer.
+
+## Components Required
+
+* Arduino Uno
+* Buzzer*1
+* Breadboard*1
+* Breadboard Jumper Wire*2
+* USB cable*1
+
+## Circuit Diagrams
+
+![img5](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(413).png?raw=true)
+
+## Code
+
+```
+
+int buzzer=8;// initialize digital IO pin that controls the buzzer
+void setup() 
+{ 
+  pinMode(buzzer,OUTPUT);// set pin mode as “output”
+} 
+void loop() 
+{
+digitalWrite(buzzer, HIGH); // produce sound
+}
+
+```
+
+## Output
+
+> The Buzzer makes beep sound.
