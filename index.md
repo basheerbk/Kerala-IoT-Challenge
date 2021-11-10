@@ -293,3 +293,63 @@ for(val=0; val<255; val++)
 ## Output
 
 > The RGB LED blinks.
+
+## LDR : Light Dependent Sensor
+
+> Photo Resistor (Photovaristor) is a resistor whose resistance varies from different incident light strength. It's based on the photoelectric effect of semiconductor. If the incident light is intense, its resistance reduces; if the incident light is weak, the resistance increases.
+> 
+![ldr](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Photoresistors_-_three_sizes_-_mm_scale.jpg/1920px-Photoresistors_-_three_sizes_-_mm_scale.jpg) 
+
+## Components Required
+
+* Arduino Uno Board
+* Photo Resistor*1
+* Red M5 LED*1
+* 10KΩ Resistor*1
+* 220Ω Resistor*1
+* Breadboard*1
+* Breadboard Jumper Wire*7
+* USB cable*1
+
+## Circuit Diagrams
+![ldr](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(438).png?raw=true)
+
+## Procedure
+* Connect the 3.3v output of the Arduino to the positive rail of the breadboard.
+* Connect the ground to the negative rail of the breadboard.
+* Place the LDR on the breadboard.
+* Attach the 10K resistor to one of the legs of the LDR.
+* Connect the A0 pin of the Arduino to the same column where the LDR and resistor is connected , Then connect the other end of the 10K resistor to the negative rail.
+* And then the second (free) leg of the LDR to the positive rail.
+* Place the LED on the breadboard.
+* Connect the 220ohm resistor to the long leg (+ve) of the LED.
+* Then we will connect the other leg of the resistor to pin number 13 (digital pin) of the Arduino.
+* and the shorter leg of the LED to the negative rail of the breadboard.
+* 
+## Code
+
+```
+
+const int ledPin = 13;
+const int ldrPin = A0;
+void setup() {
+Serial.begin(9600);
+pinMode(ledPin, OUTPUT);
+pinMode(ldrPin, INPUT);
+}
+void loop() {
+int ldrStatus = analogRead(ldrPin);
+if (ldrStatus <= 200) {
+digitalWrite(ledPin, HIGH);
+Serial.print("Its DARK, Turn on the LED : ");
+Serial.println(ldrStatus);
+} else {
+digitalWrite(ledPin, LOW);
+Serial.print("Its BRIGHT, Turn off the LED : ");
+Serial.println(ldrStatus);
+}
+}
+
+```
+
+## Output
