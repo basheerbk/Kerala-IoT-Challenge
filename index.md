@@ -103,6 +103,8 @@ digitalWrite(redled, LOW);// turn off red LED
 
 > In Traffic light the green LED blink about 5 second, then it is turnoff. Then the yellow LED blinks 3 times with a time interval of 0.5 second.Then the red LED blink about 5 seconds.
 >  This process continues.
+>
+>
 > ![Gif2](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211104_191302.gif?raw=true)
 
  
@@ -348,6 +350,74 @@ delay(10);// wait for 0.01
 ```
 
 ## Output
-> When the intensity of light increased, The Light Intensity of Output LED decreased.
+> When the intensity of light increased
+> The Light Intensity of Output LED decreased.
 > Output values are also shown in serial monitor.
+> 
 ![exp](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211114_102748.gif?raw=true)
+<br>
+
+# Experiment 8 : Flame Sensor
+
+> An experiment to understand the working of an Flame sensor.
+> The IR flame sensor is used to detect the presence of fire or other infrared source (Flame or a light source of a wavelength in the range of 760 nm to 1100 nm can be detected).
+> 
+## Components Required
+
+* Arduino UNO
+* Flame Sensor
+* LED
+* Buzzer
+* BreadBoard
+* Jumper
+
+## Circuit Diagrams
+![imag](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/IRSENSOR5MM_2048x2048.jpg?raw=true)
+![img](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(441).png?raw=true)
+
+   ## Code
+
+```
+
+const int buzzerPin = 12;
+const int flamePin = 11;
+int Flame = HIGH;
+int redled = 5;
+int greenled = 6;
+void setup() 
+{
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(redled, OUTPUT);
+  pinMode(greenled, OUTPUT);
+
+  pinMode(flamePin, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() 
+{
+  Flame = digitalRead(flamePin);
+  if (Flame== LOW)
+  {
+    digitalWrite(buzzerPin, HIGH);
+    digitalWrite(redled, HIGH);
+    digitalWrite(greenled, LOW);
+  }
+  else
+  {
+    digitalWrite(buzzerPin, LOW);
+    digitalWrite(greenled, HIGH);
+    digitalWrite(redled, LOW);
+  }
+}
+
+```
+
+## Output
+> when The IR sensor detect flame , The buzzer is beebed (LED also turned ON).
+> Sensor input values are also shown in the serial monitor.
+>
+>
+>
+> ![q](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211114_125504.gif?raw=true)
+
