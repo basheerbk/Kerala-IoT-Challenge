@@ -323,7 +323,7 @@ for(val=0; val<255; val++)
 * And then the second (free) leg of the LDR to the positive rail.
 * Place the LED on the breadboard.
 * Connect the 220ohm resistor to the long leg (+ve) of the LED.
-* Then we will connect the other leg of the resistor to pin number 13 (digital pin) of the Arduino.
+* Then we will connect the other leg of the resistor to pin number 11 (digital pin) of the Arduino.
 * and the shorter leg of the LED to the negative rail of the breadboard.
 * 
 ## Code
