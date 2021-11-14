@@ -329,27 +329,25 @@ for(val=0; val<255; val++)
 ## Code
 
 ```
-
-const int ledPin = 13;
-const int ldrPin = A0;
-void setup() {
-Serial.begin(9600);
-pinMode(ledPin, OUTPUT);
-pinMode(ldrPin, INPUT);
+int potpin=0;// initialize analog pin 0, connected with photovaristor (ldr)
+int ledpin=11;// led pin is connected to pin 11
+int val=0;// initialize variable val
+void setup()
+{
+pinMode(ledpin,OUTPUT);// set digital pin 11 as “output”
+Serial.begin(9600);// set baud rate at “9600”
 }
-void loop() {
-int ldrStatus = analogRead(ldrPin);
-if (ldrStatus <= 200) {
-digitalWrite(ledPin, HIGH);
-Serial.print("Its DARK, Turn on the LED : ");
-Serial.println(ldrStatus);
-} else {
-digitalWrite(ledPin, LOW);
-Serial.print("Its BRIGHT, Turn off the LED : ");
-Serial.println(ldrStatus);
-}
+void loop()
+{
+val=analogRead(potpin);// read the value of the sensor and assign it to val
+Serial.println(val);// display the value of val
+analogWrite(ledpin,val/70);// set up brightness（maximum value 255）
+delay(10);// wait for 0.01 
 }
 
 ```
 
 ## Output
+> When the intensity of light increased, The Light Intensity of Output LED decreased.
+> Output values are also shown in serial monitor.
+![exp](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211114_102748.gif?raw=true)
