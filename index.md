@@ -327,7 +327,7 @@ for(val=0; val<255; val++)
 * Connect the 220ohm resistor to the long leg (+ve) of the LED.
 * Then we will connect the other leg of the resistor to pin number 11 (digital pin) of the Arduino.
 * and the shorter leg of the LED to the negative rail of the breadboard.
-* 
+ 
 ## Code
 
 ```
@@ -372,10 +372,10 @@ delay(10);// wait for 0.01
 * Jumper
 
 ## Circuit Diagrams
-![imag](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/IRSENSOR5MM_2048x2048.jpg?raw=true)
+
 ![img](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(441).png?raw=true)
 
-   ## Code
+## Code
 
 ```
 
