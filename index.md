@@ -421,3 +421,50 @@ void loop()
 >
 > ![q](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211114_125504.gif?raw=true)
 
+# Experiment 9 : LM35 Temperature Sensor
+
+> An experiment to understand the working of an LM35 Temperature Sensor.
+> LM35 is a common and easy-to-use temperature sensor. LM35 is a widely used temperature sensor with many different package types. At room temperature, it can achieve the accuracy of ±1/4°C without additional calibration processing. LM35 temperature sensor can produce different voltage by different temperature When temperature is 0 ℃, it outputs 0V; if increasing 1 ℃, the output voltage will increase 10 mv.
+>
+>
+![lm34](https://sci-toys.com/scitoys/scitoys/computers/thermometer/annotated_lm34_dz_soldered.jpg)
+
+## Components Required
+
+* Arduino Uno  Board*1
+* LM35*1
+* Breadboard*1
+* Breadboard Jumper Wire*5
+* USB cable*1
+## Circuit Diagrams
+![img](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(443).png?raw=true)
+![a1](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/IMG_20211114_184300.jpg?raw=true)
+
+
+## Code
+
+```
+int potPin = 0; // initialize analog pin 0 for LM35 temperature sensor
+void setup()
+{
+Serial.begin(9600);// set baud rate at”9600”
+}
+void loop()
+{
+int val;// define variable
+int dat;// define variable
+val=analogRead(0);// read the analog value of the sensor and assign it to val
+dat=(125*val)>>8;// temperature calculation formula
+Serial.print("Temperatuture");// output and display characters beginning with Tep
+Serial.print(dat);// output and display value of dat
+Serial.println("C");// display “C” characters
+delay(2000);// wait for 2 second
+}
+
+```
+## Output
+> The temperature value is printed on serial monitor 
+>
+>
+![a1](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211114_184653.gif?raw=true)
+
