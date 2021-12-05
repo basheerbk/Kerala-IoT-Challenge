@@ -468,3 +468,476 @@ delay(2000);// wait for 2 second
 >
 ![a1](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/20211114_184653.gif?raw=true)
 
+# Experiment 10:IR Remote Control Using TSOP
+
+> An experiment to understand the working of IR Remote Control using TSOP.
+
+## Components Required
+
+* Arduino Uno Board*1
+* Infrared Remote Controller(You can use TV Remote or any other remote) *1
+* Infrared Receiver *1
+* LED *6
+* 220ΩResistor *6
+* Breadboard Wire 
+* USB cable*1
+
+## Circuit Diagrams
+
+![Circuit](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(461).png?raw=true)
+
+## Code
+
+```
+
+#include <IRremote.h> 
+int RECV_PIN = 3;              
+int c=0;                      
+IRrecv irrecv(RECV_PIN);
+decode_results results;
+void setup()
+{
+   pinMode(8, OUTPUT);
+   pinMode(9, OUTPUT);
+   pinMode(10, OUTPUT);
+   pinMode(11, OUTPUT);
+   pinMode(12, OUTPUT);
+
+   Serial.begin(9600);
+  irrecv.enableIRIn();                     
+}
+void loop() {
+  if (irrecv.decode(&results)) {
+    Serial.println(results.value);
+    irrecv.resume();                        
+  if(results.value==16773645)      //Up                            
+  {
+             digitalWrite(8,HIGH);
+  }
+  else if(results.value==4294967295)
+  {
+             digitalWrite(8,LOW);
+  }
+   if(results.value==16763445)  //Down                                     
+  {
+             digitalWrite(9,HIGH);
+  }
+  else if(results.value==4294967295)
+  {
+             digitalWrite(9,LOW);
+  }
+    if(results.value==16769565) //left                                       
+  {
+             digitalWrite(10,HIGH);
+  }
+  else if(results.value==4294967295) 
+  {
+             digitalWrite(10,LOW);
+  }
+    if(results.value==16771605) //right                                       
+  {
+             digitalWrite(11,HIGH);
+  }
+  else if(results.value==4294967295)
+  {
+             digitalWrite(11,LOW);
+  }
+    if(results.value==16714485) //ok                                       
+  {
+             digitalWrite(12,HIGH);
+  }
+  else if(results.value==4294967295)
+  {
+             digitalWrite(12,LOW);
+  }
+  }
+}
+
+```
+## Output
+
+
+# Experiment 11 :Potentiometer analog Value Reading
+
+> An experiment to understand the working of Potentiometer.
+
+## Components Required
+
+* Arduino Uno Board*1
+* 10K Potentiometer *1
+* Breadboard*1
+* Breadboard Jumper Wire*3
+* USB cable*1
+
+## Circuit Diagrams
+
+
+
+![Pot1 1](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Potentiometers_TwoExamplesWithSchematicSymbol.png?raw=true)
+
+![Pot 1](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(463).png?raw=true)
+## Code
+
+```
+
+int potpin=0;// initialize analog pin 0
+int ledpin=13;// initialize digital pin 13
+int val=0;// define val, assign initial value 0
+void setup()
+{
+pinMode(ledpin,OUTPUT);// set digital pin as “output”
+Serial.begin(9600);// set baud rate at 9600
+}
+void loop()
+{
+digitalWrite(ledpin,HIGH);// turn on the LED on pin 13
+delay(50);// wait for 0.05 second
+digitalWrite(ledpin,LOW);// turn off the LED on pin 13
+delay(50);// wait for 0.05 second
+val=analogRead(potpin);// read the analog value of analog pin 0, and assign it to val 
+Serial.println(val);// display val’s value
+}
+
+```
+
+## Output
+potentiometer values was showned in serial monitor.
+
+# Experiment 12 : 7 Segment Display
+        
+> An experiment to understand the working of 7 Segment Display.
+
+## Components Required
+
+* Arduino Uno Board*1
+* digit LED Segment Display*1
+* 220Ω Resistor*8
+* Breadboard*1
+* Breadboard Jumper Wires *several
+* USB cable*1
+
+## Circuit Diagrams
+
+![7segment 1](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(465).png?raw=true)
+
+
+
+## Code
+
+```
+
+int a=7;// set digital pin 7 for segment a
+int b=6;// set digital pin 6 for segment b
+int c=5;// set digital pin 5 for segment c
+int d=10;// set digital pin 10 for segment d
+int e=11;// set digital pin 11 for segment e
+int f=8;// set digital pin 8 for segment f
+int g=9;// set digital pin 9 for segment g
+int dp=4;// set digital pin 4 for segment dp
+void digital_0(void) // display number 5
+{
+unsigned char j;
+digitalWrite(a,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(c,HIGH);
+digitalWrite(d,HIGH);
+digitalWrite(e,HIGH);
+digitalWrite(f,HIGH);
+digitalWrite(g,LOW);
+digitalWrite(dp,LOW);
+}
+void digital_1(void) // display number 1
+{
+unsigned char j;
+digitalWrite(c,HIGH);// set level as “high” for pin 5, turn on segment c
+digitalWrite(b,HIGH);// turn on segment b
+for(j=7;j<=11;j++)// turn off other segments
+digitalWrite(j,LOW);
+digitalWrite(dp,LOW);// turn off segment dp
+}
+void digital_2(void) // display number 2
+{
+unsigned char j;
+digitalWrite(b,HIGH);
+digitalWrite(a,HIGH);
+for(j=9;j<=11;j++)
+digitalWrite(j,HIGH);
+digitalWrite(dp,LOW);
+digitalWrite(c,LOW);
+digitalWrite(f,LOW);
+}
+void digital_3(void) // display number 3
+{digitalWrite(g,HIGH);
+digitalWrite(a,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(c,HIGH);
+digitalWrite(d,HIGH);
+digitalWrite(dp,LOW);
+digitalWrite(f,LOW);
+digitalWrite(e,LOW);
+}
+void digital_4(void) // display number 4
+{digitalWrite(c,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(f,HIGH);
+digitalWrite(g,HIGH);
+digitalWrite(dp,LOW);
+digitalWrite(a,LOW);
+digitalWrite(e,LOW);
+digitalWrite(d,LOW);
+}
+void digital_5(void) // display number 5
+{
+unsigned char j;
+digitalWrite(a,HIGH);
+digitalWrite(b, LOW);
+digitalWrite(c,HIGH);
+digitalWrite(d,HIGH);
+digitalWrite(e, LOW);
+digitalWrite(f,HIGH);
+digitalWrite(g,HIGH);
+digitalWrite(dp,LOW);
+}
+void digital_6(void) // display number 6
+{
+unsigned char j;
+for(j=7;j<=11;j++)
+digitalWrite(j,HIGH);
+digitalWrite(c,HIGH);
+digitalWrite(dp,LOW);
+digitalWrite(b,LOW);
+}
+void digital_7(void) // display number 7
+{
+unsigned char j;
+for(j=5;j<=7;j++)
+digitalWrite(j,HIGH);
+digitalWrite(dp,LOW);
+for(j=8;j<=11;j++)
+digitalWrite(j,LOW);
+}
+void digital_8(void) // display number 8
+{
+unsigned char j;
+for(j=5;j<=11;j++)
+digitalWrite(j,HIGH);
+digitalWrite(dp,LOW);
+}
+void digital_9(void) // display number 5
+{
+unsigned char j;
+digitalWrite(a,HIGH);
+digitalWrite(b,HIGH);
+digitalWrite(c,HIGH);
+digitalWrite(d,HIGH);
+digitalWrite(e, LOW);
+digitalWrite(f,HIGH);
+digitalWrite(g,HIGH);
+digitalWrite(dp,LOW);
+}
+void setup()
+{
+int i;// set variable
+for(i=4;i<=11;i++)
+pinMode(i,OUTPUT);// set pin 4-11as “output”
+}
+void loop()
+{
+while(1)
+{
+digital_0();// display number 0
+delay(1000);// wait for 1s
+digital_1();// display number 1
+delay(1000);// wait for 1s
+digital_2();// display number 2
+delay(1000); // wait for 1s
+digital_3();// display number 3
+delay(1000); // wait for 1s
+digital_4();// display number 4
+delay(1000); // wait for 1s
+digital_5();// display number 5
+delay(1000); // wait for 1s
+digital_6();// display number 6
+delay(1000); // wait for 1s
+digital_7();// display number 7
+delay(1000); // wait for 1s
+digital_8();// display number 8
+delay(1000); // wait for 1s
+digital_9();// display number 9
+delay(1000); // wait for 1s
+}
+}
+
+```
+
+## Output
+Numbers displayed on the segement display
+
+
+# Assignment 1 : Automatic Night Light
+
+> An experiment to create automatic night lamp model using LDR and LED.
+
+## Components Required
+
+* Arduino Uno Board
+* Photo Resistor*1
+* Yellow M5 LED*1
+* 10KΩ Resistor*1
+* 220Ω Resistor*1
+* Breadboard*1
+* Breadboard Jumper Wire
+* USB cable*1
+
+## Circuit Diagrams 
+
+![A1 1](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(467).png?raw=true)
+
+```
+
+const int ledPin = 13;  
+const int ldrPin = A0;  
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);  
+  pinMode(ldrPin, INPUT);  
+}
+void loop() {
+  int ldrStatus = analogRead(ldrPin); 
+   if (ldrStatus <=300) {
+    digitalWrite(ledPin, HIGH);              
+    Serial.println("LED is ON");
+   }
+  else {
+    digitalWrite(ledPin, LOW);        
+    Serial.println("LED is OFF");
+  }
+}
+
+```
+
+## Output
+LED turnned on automatically, when its dark.
+
+# Assignment 2 : Digital Dice  
+
+> An experiment to create a Digital Dice using 6 LEDs and 1 Push Button
+
+## Components Required
+
+* Arduino Uno Board*1
+* Breadboard*1
+* Breadboard Jumper Wire
+* USB cable*1
+* LED*6
+* Push Button*1
+* 1KΩ Resistor*1
+* 220Ω Resistor*6
+
+## Circuit Diagrams 
+![img](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/Screenshot%20(469).png?raw=true)
+                                                                             
+## Code
+
+```
+
+#define DEBUG 0
+// 6 consecutive digital pins for the LEDs
+int first = 2;
+int second = 3;
+int third = 4;
+int fourth = 5;
+int fifth = 6;
+int sixth = 7;
+// pin for the button switch
+int button = 12;
+// value to check state of button switch
+int pressed = 0;
+void setup() {
+  // set all LED pins to OUTPUT
+  for (int i=first; i<=sixth; i++) {
+    pinMode(i, OUTPUT);
+  }
+  // set buttin pin to INPUT
+  pinMode(button, INPUT);
+
+  // initialize random seed by noise from analog pin 0 (should be unconnected)
+  randomSeed(analogRead(0));
+  // if we're debugging, connect to serial 
+  #ifdef DEBUG
+    Serial.begin(9600);
+  #endif
+}
+void buildUpTension() {
+  // light LEDs from left to right and back to build up tension
+  // while waiting for the dice to be thrown
+  // left to right
+  for (int i=first; i<=sixth; i++) {
+    if (i!=first) {
+      digitalWrite(i-1, LOW);
+    }
+    digitalWrite(i, HIGH);
+    delay(100);
+  }
+  // right to left
+  for (int i=sixth; i>=first; i--) {
+    if (i!=sixth) {
+      digitalWrite(i+1, LOW);
+    }
+    digitalWrite(i, HIGH);
+    delay(100);
+  }
+}
+
+void showNumber(int number) {
+  digitalWrite(first, HIGH);
+  if (number >= 2) {
+    digitalWrite(second, HIGH);
+  }
+  if (number >= 3) {
+    digitalWrite(third, HIGH);    
+  }
+  if (number >= 4) {
+    digitalWrite(fourth, HIGH);    
+  }
+  if (number >= 5) {
+    digitalWrite(fifth, HIGH);    
+  }
+  if (number == 6) {
+    digitalWrite(sixth, HIGH);    
+  }
+}
+int throwDice() {
+  // get a random number in the range [1,6]
+  int randNumber = random(1,7);
+  
+  #ifdef DEBUG
+    Serial.println(randNumber);
+  #endif
+  
+  return randNumber;
+}
+
+void setAllLEDs(int value) {
+  for (int i=first; i<=sixth; i++) {
+    digitalWrite(i, value);
+  }
+}
+void loop() {
+  // if button is pressed - throw the dice
+  pressed = digitalRead(button);
+
+  if (pressed == HIGH) {
+    // remove previous number
+    setAllLEDs(LOW); 
+    buildUpTension();
+    int thrownNumber = throwDice();
+    showNumber(thrownNumber);
+  } 
+}
+
+
+```
+
+## Output
+LEDs worked as a dice. different number of LEDs turned ON, When the button pressed each time.
