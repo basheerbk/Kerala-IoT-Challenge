@@ -67,7 +67,7 @@ void loop() {
 * LED positive pin is connected to ESP32 pin no 15.
 * LED negative pin is connected to ESP32 GND pin.
 * Program the ESP32.  
-* Create Templates in BLynk IoT webapp and mobile app. [Referral Documents](https://docs.blynk.io/en/t) 
+* Create Templates in BLynk IoT webapp and mobile app. [(Resources)](https://docs.blynk.io/en/t) 
 * Connect the ESP32 to wifi network.
 * Controll the LED using  BLynk IoT webapp and mobile app.
 
