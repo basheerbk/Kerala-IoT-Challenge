@@ -11,7 +11,7 @@
 
 > | Challenge | Topic | Links | Start Date |
 > | --- | --- | --- | --- |
-> | Level 1 | Arduino & Basic Electronics | [Documentation](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/lvl_One.md) | 20/oct/2021 |
-> | Level 2 | Introduction to IoT & ESP32 | [Documentation](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/lvl_two.md) | 4/Feb/2022 |
+> | Level 1 | Arduino & Basic Electronics | [Documentation](https://basheerbk.github.io/Kerala-IoT-Challenge/lvl_One) | 20/oct/2021 |
+> | Level 2 | Introduction to IoT & ESP32 | [Documentation](https://basheerbk.github.io/Kerala-IoT-Challenge/lvl_two) | 4/Feb/2022 |
 > | Level 3 | | | |
 > | Level 4 | | | |
