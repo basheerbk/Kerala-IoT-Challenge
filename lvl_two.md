@@ -2,7 +2,7 @@
 
 # Experiment 1 -  Hello World LED Program Using Blynk App
 
-> A basic Program similar to printing "*Hello World* " in any programming language. The Aim is to blink an LED using **Esp 32** and **Blynk App**
+> A basic Program similar to printing "*Hello World* " in any programming language. The Aim is to controll (On/Off) an LED using **Esp 32** and **Blynk App**
 
 > ESP32 is a series of low-cost, low-power system on a chip microcontrollers with integrated Wi-Fi and dual-mode Bluetooth.
 [click here to know more about Esp 32](https://en.wikipedia.org/wiki/ESP32) 
@@ -13,6 +13,8 @@
 * LED (Any Color) x 1 Nos
 * Breadboard 
 * Jumper Wires (Male to Male ) X 2 Nos
+
+
 ## Circuit Diagram
 
 ![image](https://user-images.githubusercontent.com/49371247/152683254-d48f2a72-1b8d-48e6-92ed-5a02a308c243.png)
@@ -21,8 +23,8 @@
 
 ```
 // Fill-in information from your Blynk Template here
-#define BLYNK_TEMPLATE_ID "TMPL72W3EGw5" // This has to be changed using your data
-#define BLYNK_DEVICE_NAME "project1" // This has to be changed using your data
+#define BLYNK_TEMPLATE_ID "TMPL72W3EGw5" // This has to be changed using your Template ID.
+#define BLYNK_DEVICE_NAME "project1" // This has to be changed using your Device Name.
 
 #define BLYNK_FIRMWARE_VERSION        
 
@@ -60,3 +62,16 @@ void loop() {
 ```
 
 ## Procedure
+
+* First connect the LED to ESP32 using breadboard and other components.
+* LED positive pin is connected to ESP32 pin no 15.
+* LED negative pin is connected to ESP32 GND pin.
+* Program the ESP32.  
+* Create Templates in BLynk IoT webapp and mobile app. [Referral Documents](https://docs.blynk.io/en/t) 
+* Connect the ESP32 to wifi network.
+* Controll the LED using  BLynk IoT webapp and mobile app.
+
+## Output
+![gif](https://github.com/basheerbk/Kerala-IoT-Challenge/blob/main/image/lvl2/20220206_203611.gif?raw=true)
+
+
