@@ -84,6 +84,7 @@ void loop() {
 [click here to know more about Esp 32](https://en.wikipedia.org/wiki/ESP32) 
 > Arduino IoT cloud is a online platform that makes it easy for you to create, deploy and monitor IoT projects.
 [click here to know more about Arduino IoT cloud](https://docs.arduino.cc/cloud/iot-cloud)
+
 ## Components Required  
 * ESP 32 Development Board 
 * USB Cable 
@@ -99,41 +100,50 @@ void loop() {
 ## Code
 
 ```
-// Fill-in information from your Blynk Template here
-#define BLYNK_TEMPLATE_ID "TMPL72W3EGw5" // This has to be changed using your Template ID.
-#define BLYNK_DEVICE_NAME "project1" // This has to be changed using your Device Name.
+#include "thingProperties.h"
 
-#define BLYNK_FIRMWARE_VERSION        
+void setup() {
+  // Initialize serial and wait for port to open:
+  Serial.begin(9600);
+  pinMode(2, OUTPUT);
+  // This delay gives the chance to wait for a Serial Monitor without blocking if none is found
+  delay(1500);
 
-#define BLYNK_PRINT Serial
-//#define BLYNK_DEBUG
+  // Defined in thingProperties.h
+  initProperties();
 
-#define APP_DEBUG
+  // Connect to Arduino IoT Cloud
+  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
 
-// Uncomment your board, or configure a custom board in Settings.h
-//#define USE_WROVER_BOARD
-//#define USE_TTGO_T7
-//#define USE_ESP32C3_DEV_MODULE
-//#define USE_ESP32S2_DEV_KIT
-
-#include "BlynkEdgent.h"
-BLYNK_WRITE(V0)
-{
-  int pinValue = param.asInt();
-  digitalWrite(15,pinValue); 
-}
-      
-void setup()
-{
-  pinMode(15,OUTPUT);
-  Serial.begin(115200);
-  delay(100);
-
-  BlynkEdgent.begin();
+  /*
+     The following function allows you to obtain more information
+     related to the state of network and IoT Cloud connection and errors
+     the higher number the more granular information you’ll get.
+     The default is 0 (only errors).
+     Maximum is 4
+  */
+  setDebugMessageLevel(2);
+  ArduinoCloud.printDebugInfo();
 }
 
 void loop() {
-  BlynkEdgent.run();
+  ArduinoCloud.update();
+  
+}
+
+/*
+  Since LED is READ_WRITE variable, onLEDChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onLEDChange()  {
+  if (LED == 1)
+  {
+    digitalWrite(2, HIGH);
+  }
+  else
+  {
+    digitalWrite(2, LOW);
+  }
 }
 
 ```
