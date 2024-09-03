@@ -5,7 +5,7 @@
 <br>
 
 ### About Me
-> _Hello Folks!_  I'm Muhammed Basheer. I'm a B.voc Automobile (Auto Electrical & Electronic) Student at _[**Farook college (autonomous)**](https://www.farookcollege.ac.in/),_ calicut. Always Interested in electronics & mechanics and to make DIY projects.
+> _Hello Folks!_  I'm Muhammed Basheer. I am  Always Interested in electronics & mechanics and to make DIY projects and this contain some documentation of Arduino projects.
 
 ### Levels of IoT Challenge
 
